@@ -1,32 +1,61 @@
-# Case directories and sensitive data
+# Git ignore rules# Case directories and sensitive data
+
 cases/
-case_*/
-*.dd
+
+# Rust build artifactscase_*/
+
+A_rustscanner/target/*.dd
+
 *.dd.sha256
-*.asc
-*.gpg
 
-# Reports and exports
-reports/
+# Python caches*.asc
+
+__pycache__/*.gpg
+
+*.pyc
+
+*.pyo# Reports and exports
+
+*.pydreports/
+
 exports/
-archives/
-logs/*.log
-logs/*.jsonl
 
-# Mounted filesystems
-mount/
+# Case data and disk imagesarchives/
+
+/cases/logs/*.log
+
+*.ddlogs/*.jsonl
+
+*.img
+
+*.E01# Mounted filesystems
+
+*.rawmount/
+
 mnt/
 
-# Python
-__pycache__/
-*.py[cod]
+# Generated reports and packages
+
+/packages/# Python
+
+*.zip__pycache__/
+
+*.gpg*.py[cod]
+
 *$py.class
-*.so
-.Python
+
+# Local configuration overrides*.so
+
+config.local.ini.Python
+
 build/
-develop-eggs/
-dist/
-downloads/
+
+# System filesdevelop-eggs/
+
+.DS_Storedist/
+
+Thumbs.dbdownloads/
+
 eggs/
 .eggs/
 lib/
