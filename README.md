@@ -73,6 +73,32 @@ This example demonstrates how to analyze an existing disk image.
 
     Scan results are located in the `reports/` subdirectory of your case folder.
 
+## 📦 Portable Deployment
+
+The toolkit can be packaged for easy distribution and field use:
+
+```bash
+# Create portable zip (smallest)
+make portable-zip
+
+# Build standalone executable (no Python needed)
+make build-standalone
+
+# Create Docker container (cross-platform)
+make docker-build
+
+# Create bootable USB stick (forensic-ready)
+make portable-usb DEVICE=/dev/sdX
+```
+
+**Options:**
+- **Portable Zip**: ~140 KB, requires Python on target system
+- **Standalone Executable**: ~30-50 MB, runs without Python (Linux/Windows)
+- **Docker Container**: ~100-200 MB, runs anywhere with Docker
+- **USB Live Stick**: ~500 MB+, bootable, complete toolkit
+
+📚 **See [Portable Deployment Guide](docs/PORTABLE_DEPLOYMENT.md) for detailed instructions**
+
 ## Development
 
 For details on the architecture, developer workflows, and project-specific conventions, please see the [AI agent instructions](/.github/copilot-instructions.md).

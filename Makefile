@@ -1,4 +1,5 @@
 .PHONY: help test test-scanner test-gui test-coverage test-shell lint clean format install-dev docs
+.PHONY: build-standalone docker-build docker-save portable-zip portable-usb
 
 help:
 	@echo "Crypto Recovery Toolkit - Development Commands"
@@ -14,6 +15,17 @@ help:
 	@echo "  make test-shell       Validate shell scripts"
 	@echo "  make lint             Run all linters"
 	@echo "  make format           Format Python code"
+	@echo ""
+	@echo "Portable Builds:"
+	@echo "  make build-standalone Build single executable (PyInstaller)"
+	@echo "  make docker-build     Build Docker container"
+	@echo "  make docker-save      Export Docker image to file"
+	@echo "  make portable-zip     Create portable zip archive"
+	@echo "  make portable-usb     Create bootable USB stick (requires DEVICE=/dev/sdX)"
+	@echo ""
+	@echo "Benchmarks:"
+	@echo "  make benchmark        Quick performance benchmark"
+	@echo "  make benchmark-stress Stress test with 1000 files"
 	@echo ""
 	@echo "Cleanup:"
 	@echo "  make clean            Remove build artifacts and caches"
@@ -93,4 +105,49 @@ docs:
 	@echo "Documentation is in docs/ directory"
 	@echo "Training materials are in training/ directory"
 	@echo "Use 'scripts/generate_training_pdf.sh' for PDF generation"
+
+# Portable Builds
+build-standalone:
+	@echo "Building standalone executable with PyInstaller..."
+	@chmod +x build_standalone.sh
+	./build_standalone.sh
+	@echo "✓ Executable: dist/crypto-scanner"
+
+docker-build:
+	@echo "Building Docker container..."
+	docker build -t crypto-scanner:latest .
+	@echo "✓ Docker image: crypto-scanner:latest"
+
+docker-save:
+	@echo "Exporting Docker image to file..."
+	docker save crypto-scanner:latest | gzip > crypto-scanner.tar.gz
+	@echo "✓ Exported to: crypto-scanner.tar.gz"
+	@ls -lh crypto-scanner.tar.gz
+
+portable-zip:
+	@echo "Creating portable zip archive..."
+	tar czf crypto-toolkit-portable.tar.gz \
+		--exclude='.git' \
+		--exclude='__pycache__' \
+		--exclude='*.pyc' \
+		--exclude='.pytest_cache' \
+		--exclude='htmlcov' \
+		--exclude='dist' \
+		--exclude='build' \
+		--exclude='*.egg-info' \
+		.
+	@echo "✓ Created: crypto-toolkit-portable.tar.gz"
+	@ls -lh crypto-toolkit-portable.tar.gz
+
+portable-usb:
+	@if [ -z "$(DEVICE)" ]; then \
+		echo "ERROR: DEVICE not specified"; \
+		echo "Usage: make portable-usb DEVICE=/dev/sdX"; \
+		exit 1; \
+	fi
+	@echo "Creating portable USB stick on $(DEVICE)..."
+	@chmod +x create_portable_usb.sh
+	sudo ./create_portable_usb.sh $(DEVICE)
+	@echo "✓ USB stick ready: $(DEVICE)"
+
 
