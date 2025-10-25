@@ -1,0 +1,31 @@
+# Übergabe‑/Empfangsbestätigung für sensitive Daten (Detailliert)
+
+Case ID: ____________________
+Client: ______________________
+Datum: ______________________
+Ort: ______________________
+
+Übergebene(n) Artikel:
+- Encrypted image filename: ______________________
+- Encrypted report filename(s): ______________________
+- Verwendete Verschlüsselung: (GPG / LUKS) ______________________
+- GPG Empfänger‑Key ID: ______________________
+- Hashes (SHA256):
+  - image: ______________________
+  - reports archive: ______________________
+
+Übergabeart:
+[ ] Persönliche Übergabe (Empfänger legte ID vor)   [ ] Sicherer Transfer (GPG an Key ID)
+
+Empfangsbestätigung (Client)
+Ich bestätige den Empfang der oben beschriebenen, verschlüsselten Daten in der beschriebenen Form.
+
+Name (Block): ______________________
+Unterschrift: ______________________   Datum: __________
+ID‑Prüfung (falls persönlich): ______________________
+
+Operator (Bestätigung)
+Name (Block): ______________________
+Unterschrift: ______________________   Datum: __________
+
+Aufbewahrung: Die unterschriebene Bestätigung wird in case_dir/archives abgelegt (gesigned und als SHA256).

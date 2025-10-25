@@ -1,0 +1,16 @@
+Chain of Custody Log
+---------------------
+Case ID: ____________________
+Device ID: __________________
+Collected by: _______________
+Received from: ______________
+Date & Time Received: _______
+
+Actions:
+- Imaging performed: (yes/no)  Path to image: ___________________
+- Hash (sha256) of image: ___________________
+- Analysis performed by: ____________________
+- Reports produced: ________________________
+
+Transfer history:
+- From ______________ to ______________ at ______________ (signature)

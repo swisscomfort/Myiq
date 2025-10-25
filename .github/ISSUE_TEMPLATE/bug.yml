@@ -1,0 +1,64 @@
+name: 🐛 Bug Report
+description: Report a bug or unexpected behavior
+title: "[BUG] "
+labels: ["bug"]
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Brief description of the bug
+      placeholder: "What happened?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Exact steps to reproduce the issue
+      placeholder: |
+        1. Run command: ...
+        2. Observe output: ...
+        3. Expected behavior: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Relevant system information
+      placeholder: |
+        - OS: Debian 11 / Ubuntu 22.04
+        - Python version: 3.10
+        - Rust version: 1.70
+        - Command used: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: error_logs
+    attributes:
+      label: Error Logs
+      description: Relevant error messages or logs (use code blocks)
+      placeholder: |
+        ```
+        Error message here...
+        ```
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any other relevant information
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have read the documentation
+        - label: I have searched existing issues
+        - label: I can reproduce the issue consistently

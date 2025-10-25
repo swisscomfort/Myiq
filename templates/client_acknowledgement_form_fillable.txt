@@ -1,0 +1,36 @@
+CLIENT ACKNOWLEDGEMENT & PROCESS CHECKLIST (DEUTSCH)
+
+Case ID: ______________________
+Client Name: ______________________
+Device(s) / Seriennummer: ______________________
+Datum: ______________________
+Operator: ______________________
+
+IDENTITÄT / ID‑CHECK:
+[ ] Identität geprüft (Methode/Bemerkung): __________________    Initials: ____
+
+SCOPE / UMFANG (ankreuzen):
+[ ] Forensisches Image erstellen                         Initials: ____
+[ ] Suche nach wallet‑Artefakten                         Initials: ____
+[ ] Owner‑Report (laiengerecht)                           Initials: ____
+[ ] Court‑Report (nur mit zusätzlicher Einwilligung)     Initials: ____
+[ ] Weitere Maßnahmen nur mit separater schriftl. Genehmigung Initials: ____
+
+ABLAUF (verständnisbestätigung):
+1) Entgegennahme & Chain‑of‑Custody documented       [ ] Initials: ____
+2) Imaging (READ‑ONLY)                               [ ] Initials: ____
+3) SHA256 Hash Erstellung                            [ ] Initials: ____
+4) Analyse (Filename/Content/YARA/bulk_extractor)    [ ] Initials: ____
+5) Maskierte Berichte; keine automatische Schlüssel‑Extr. [ ] Initials: ____
+6) Verschlüsselung & Aufbewahrung                    [ ] Initials: ____
+7) Übergabe/Receipt bei Herausgabe                   [ ] Initials: ____
+8) Löschung auf Anfrage / nach Retention             [ ] Initials: ____
+
+CONSENT:
+Name (Block): ______________________
+Client Signature: ______________________  Date: ______________
+
+Operator (Block): ______________________
+Operator Signature: ____________________ Date: ______________
+
+WICHTIG: Diese ausgefüllte Datei wird in den Case‑Ordner kopiert und signiert. Bitte prüfen.

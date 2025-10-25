@@ -1,0 +1,74 @@
+name: Rust Scanner Build & Test
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'A_rustscanner/**'
+      - '.github/workflows/rust.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'A_rustscanner/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rust-version: [stable, nightly]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install Rust
+      uses: dtolnay/rust-toolchain@master
+      with:
+        toolchain: ${{ matrix.rust-version }}
+
+    - name: Cache cargo registry
+      uses: actions/cache@v3
+      with:
+        path: ~/.cargo/registry
+        key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+
+    - name: Cache cargo index
+      uses: actions/cache@v3
+      with:
+        path: ~/.cargo/git
+        key: ${{ runner.os }}-cargo-git-${{ hashFiles('**/Cargo.lock') }}
+
+    - name: Cache cargo build
+      uses: actions/cache@v3
+      with:
+        path: A_rustscanner/target
+        key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
+
+    - name: Build (debug)
+      working-directory: ./A_rustscanner
+      run: cargo build --verbose
+
+    - name: Build (release)
+      working-directory: ./A_rustscanner
+      run: cargo build --release --verbose
+
+    - name: Run tests
+      working-directory: ./A_rustscanner
+      run: cargo test --verbose
+
+    - name: Run clippy (linter)
+      working-directory: ./A_rustscanner
+      run: cargo clippy -- -D warnings || true
+      continue-on-error: true
+
+    - name: Format check
+      working-directory: ./A_rustscanner
+      run: cargo fmt -- --check || true
+      continue-on-error: true
+
+    - name: Upload release binary
+      if: matrix.rust-version == 'stable' && github.ref == 'refs/heads/main'
+      uses: actions/upload-artifact@v3
+      with:
+        name: rustscanner-${{ runner.os }}
+        path: A_rustscanner/target/release/rustscanner

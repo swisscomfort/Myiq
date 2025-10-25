@@ -1,0 +1,14 @@
+projekt/
+├── start.sh
+├── scripts/
+│   ├── image_disk.sh
+│   └── analyze.sh
+├── tools/
+│   └── modules/
+│       └── search.py
+├── yara_rules/
+│   └── wallet_candidates.yar
+├── templates/
+│   ├── consent_form.txt
+│   └── chain_of_custody.txt
+└── README.md

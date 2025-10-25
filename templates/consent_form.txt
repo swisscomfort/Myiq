@@ -1,0 +1,33 @@
+Consent / Authorisation Template (GDPR-aware)
+--------------------------------------------------
+Client name: ______________________
+Owner of device(s): ______________________
+Device identifier(s) / serial: ______________________
+Date & time: ______________________
+Service provider: ______________________
+
+Scope of work (tick and describe):
+[ ] Forensic imaging of device(s)
+[ ] Search for wallet-related artefacts (keystore files, wallet files, seed phrase hints)
+[ ] Provide report of findings
+Detailed purpose: ______________________________________________________
+
+Legal basis and consent:
+- I hereby give explicit, informed consent for the service provider to create a forensically sound image of the device(s) listed above and to search that image for wallet-related artefacts for the purpose stated.
+- I understand that the provider will NOT automatically extract or publish private keys or seed phrases without my explicit further written consent.
+- I understand my rights under GDPR (access, rectification, erasure, restriction, objection, data portability) and how to exercise them.
+
+Retention and deletion:
+- Default retention period for images and reports: _______ days (suggested: 30)
+- After expiry, images and reports will be securely deleted or returned as requested.
+
+Encryption & transfer:
+- Images and reports will be stored encrypted at rest; transfer only via protected channels.
+
+Signatures:
+Client: ______________________   Date: ______________
+Service provider: ______________  Date: ______________
+
+Optional: Additional clauses (attach if needed)
+- Data Processing Agreement signed: (yes/no) ______
+- Contact for data requests: ______________________

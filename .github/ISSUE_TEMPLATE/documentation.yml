@@ -1,0 +1,30 @@
+name: 📖 Documentation
+description: Improve documentation or suggest documentation changes
+title: "[DOCS] "
+labels: ["documentation"]
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What needs to be documented?
+      placeholder: "Describe which documentation is missing or unclear..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested Changes
+      description: What should be added or changed?
+      placeholder: |
+        ```markdown
+        # Example improvement
+        ...
+        ```
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Links to relevant code, issues, or documentation

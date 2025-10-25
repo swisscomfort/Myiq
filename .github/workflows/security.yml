@@ -1,0 +1,48 @@
+name: Security Scanning
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+      continue-on-error: true
+
+    - name: Upload Trivy results to GitHub Security
+      uses: github/codeql-action/upload-sarif@v2
+      if: always()
+      with:
+        sarif_file: 'trivy-results.sarif'
+
+    - name: Check for secrets (detect hardcoded credentials)
+      run: |
+        if grep -r "BEGIN RSA PRIVATE KEY\|BEGIN OPENSSH PRIVATE KEY\|aws_access_key_id\|api_key\|secret_key" --exclude-dir=.git . ; then
+          echo "⚠️ WARNING: Possible secrets detected in codebase"
+          exit 1
+        fi
+      continue-on-error: true
+
+    - name: Verify no case data committed
+      run: |
+        if find . -name "case_*" -o -name "*.dd" -o -name "*.img" | grep -v ".git"; then
+          echo "❌ ERROR: Case data or images should not be in git!"
+          exit 1
+        fi
+      continue-on-error: true

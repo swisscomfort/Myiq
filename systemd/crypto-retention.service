@@ -1,0 +1,10 @@
+[Unit]
+Description=Crypto Toolkit Retention Manager - secure deletion of old cases
+After=network.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h
+# Change ExecStart to the full path where your repo is located, or run relative inside chosen dir
+ExecStart=/bin/bash /opt/crypto-toolkit/scripts/retention_manager.sh /opt/crypto-toolkit/cases
+User=root

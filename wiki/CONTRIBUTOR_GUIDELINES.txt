@@ -1,0 +1,25 @@
+Contributor Guidelines (Kurz - deutsch)
+
+Zweck:
+- Einheitliche Qualität & rechtliche Nachvollziehbarkeit.
+
+Wichtig:
+- Schreibe in deutscher Sprache; technische Befehle in Englisch.
+- Verwende das article_template.md als Basis (YAML‑Metadaten ausfüllen).
+- Quellenpflicht: Alle Fakten/Anleitungen mit mindestens 1 Quelle belegen.
+- Jede Anleitung MUSS ein Abschnitt "Wichtiger Hinweis (Risiko)" enthalten.
+
+Review / Freigabe:
+- PR → Editor Review (technisch) → Legal Review (wenn rechtlich relevant) → Merge.
+- Legal‑Relevante Themen definieren: Consent, DPA, Schlüssel‑Extraktion, Haftung, Aufbewahrung.
+
+Style:
+- Kurze Abschnitte, nummerierte Schritte, Codeblöcke mit Befehlen.
+- Vermeide interaktive Beispiele (input()) in Tutorials.
+
+Lizenz:
+- Inhalte unter CC BY‑SA 4.0 (sofern nicht anders vereinbart).
+
+Kontakt:
+- Editor: editor@example.com
+- Legal: dpo@example.com

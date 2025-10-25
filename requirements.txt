@@ -1,0 +1,21 @@
+# Crypto Recovery Toolkit - Python Dependencies
+# All scripts use Python 3 standard library only (no external deps for core functionality)
+# This file documents the minimal Python version and optional tools
+
+# Minimal Python version: 3.8+
+# Install: python3 -m pip install -r requirements.txt
+
+# Core scripts use ONLY standard library:
+# - json, csv, os, sys, hashlib, re, argparse, subprocess, datetime
+
+# Optional GUI dependencies (for tools/gui/):
+# Tkinter is usually pre-installed on most systems
+# On Debian/Ubuntu: sudo apt install python3-tk
+
+# No external PyPI packages required for core functionality!
+# This makes the toolkit highly portable and secure (no supply chain attacks)
+
+# Development/Testing (optional):
+# pytest>=7.0.0
+# pylint>=2.15.0
+# black>=22.0.0

@@ -1,0 +1,36 @@
+Data Processing Agreement (DPA) — Base template
+--------------------------------------------------
+Between:
+- Data Controller: [Client name, address, contact]
+- Data Processor: [Your company / your name, address, contact]
+
+1. Subject matter and duration
+- Processor will: create forensic disk images, search for wallet-related artefacts, produce reports.
+- Duration: until images/reports are deleted per retention policy or by instruction of Controller.
+
+2. Categories of personal data
+- Device metadata, filenames, file snippets, possible contact information encountered in files.
+
+3. Purpose of processing
+- Recovery and reporting of wallet-related artefacts as instructed by Controller.
+
+4. Security measures
+- Images and reports stored encrypted (GPG or LUKS).
+- Access restricted to named personnel: ______________________
+- Logging and chain-of-custody documented.
+
+5. Subprocessors
+- None / or list subprocessors with prior written approval.
+
+6. Data subject rights
+- Processor will assist Controller to comply with data subject requests.
+
+7. Deletion and return
+- On termination or upon Controller request, Processor will securely delete images and reports and provide proof of deletion.
+
+8. Liability & Audit
+- Agreed liability limits and right to audit by Controller or independent auditor.
+
+Signatures:
+Controller: ______________________   Date: ______________
+Processor: ______________________    Date: ______________

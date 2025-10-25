@@ -1,0 +1,17 @@
+Juristische Prüf‑Checkliste (Kurz)
+---------------------------------
+- Consent form (signed) vorhanden für jeden Case
+- Data Processing Agreement (DPA) vorhanden und unterschrieben
+- Chain of Custody Protokoll vollständig ausgefüllt
+- Retention policy dokumentiert (retention_days)
+- Proof of imaging: image.dd.sha256 + dd/logs
+- Verschlüsselungsbelege: gpg recipient, key fingerprints, signed manifest
+- Masked reports (JSON/CSV) bereitgestellt, keine Klartext‑Seeds
+- Liste der Personen mit Zugriffsberechtigung (operator list)
+- DPIA (Data Protection Impact Assessment) oder Entscheidung, warum nicht erforderlich
+- Incident response process und Kontaktliste
+- Proof of secure deletion (logs oder manifest)
+- Insurance / liability clauses überprüft
+- Nachweis der Key‑Verwaltung (private keys gesichert, HSM/Token falls vorhanden)
+- Subprocessor‑Liste (falls Drittanbieter / Cloud genutzt werden)
+- Log‑Files und Audit‑Trail (Zugriffe, Timestamps)

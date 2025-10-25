@@ -1,0 +1,77 @@
+name: Full Integration Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  integration-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install Rust
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          bash coreutils util-linux python3-tk gnupg \
+          shellcheck
+
+    - name: Build Rust scanner
+      working-directory: ./A_rustscanner
+      run: |
+        cargo build --release
+
+    - name: Test Python scanner
+      run: |
+        python3 tools/modules/search.py --help
+
+    - name: Run lint checks
+      run: |
+        make lint || true
+
+    - name: Create test data
+      run: |
+        mkdir -p test_data/subdir
+        echo '{"wallet": "0xdeadbeef"}' > test_data/wallet.json
+        echo "seed phrase here" > test_data/keys.txt
+
+    - name: Test Python scanner on test data
+      run: |
+        python3 tools/modules/search.py \
+          --root test_data \
+          --outdir test_output
+
+    - name: Test Rust scanner on test data
+      run: |
+        ./A_rustscanner/target/release/rustscanner \
+          --root test_data \
+          --head-size 10000 \
+          > test_output.jsonl || true
+
+    - name: Verify outputs exist
+      run: |
+        if [ -d test_output ]; then
+          echo "✓ Python scanner output generated"
+          ls -la test_output/
+        fi
+        if [ -f test_output.jsonl ]; then
+          echo "✓ Rust scanner output generated"
+          wc -l test_output.jsonl
+        fi
+
+    - name: Clean up test data
+      run: |
+        rm -rf test_data test_output test_output.jsonl
