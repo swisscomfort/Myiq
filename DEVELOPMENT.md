@@ -17,7 +17,7 @@ Welcome! This guide helps you set up a development environment and contribute to
 ### Prerequisites
 
 - **OS**: Debian/Ubuntu Linux
-- **Tools**: bash, python3, rust, git
+- **Tools**: bash, python3, git
 - **Permissions**: sudo access for optional tool installation
 
 ### Installation
@@ -30,18 +30,13 @@ cd crypto-recovery-toolkit
 # Install development dependencies
 make install-dev
 
-# Build Rust scanner
-make build
-
 # Verify installation
 python3 tools/modules/search.py --help
-./A_rustscanner/target/release/rustscanner --help
 ```
 
 ### Recommended IDEs/Editors
 
 - **VS Code** with extensions:
-  - Rust Analyzer (for Rust development)
   - Python (for Python development)
   - ShellFormat (for shell scripts)
   - EditorConfig (for consistent formatting)
@@ -161,43 +156,6 @@ black your_file.py
 pylint your_file.py
 ```
 
-### Rust
-
-**Style:**
-- Follow Rust 2021 edition conventions
-- Use `cargo fmt` and `cargo clippy`
-- Document public APIs with doc comments
-- Error handling: prefer `anyhow` for main.rs, `thiserror` for libraries
-
-**Example:**
-
-```rust
-use anyhow::Result;
-use serde::{Deserialize, Serialize};
-
-/// Represents a single forensic finding
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Finding {
-    pub path: String,
-    pub pattern: String,
-    pub timestamp: String,
-}
-
-/// Process file and return findings
-pub fn scan_file(path: &str, pattern: &regex::Regex) -> Result<Vec<Finding>> {
-    // Implementation...
-    Ok(vec![])
-}
-```
-
-Format and check:
-
-```bash
-cd A_rustscanner
-cargo fmt
-cargo clippy
-```
-
 ### Shell Scripts
 
 **Style:**
@@ -270,28 +228,20 @@ python3 -m pytest tests/ -v
 make test
 ```
 
-### Rust Tests
+### Test Coverage
 
-Add tests in `A_rustscanner/`:
-
-```rust
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_scan_file() {
-        let result = scan_file("test.txt", &regex::Regex::new("pattern").unwrap());
-        assert!(result.is_ok());
-    }
-}
-```
-
-Run tests:
+Check test coverage:
 
 ```bash
-cd A_rustscanner
-cargo test
+make test-coverage
+```
+
+Run specific test suites:
+
+```bash
+make test-scanner  # Scanner unit tests only
+make test-gui      # GUI integration tests only
+make benchmark     # Performance benchmarks
 ```
 
 ### Manual Testing
@@ -316,16 +266,9 @@ ls test_case/reports/
 ### Building for Release
 
 ```bash
-# Build Rust scanner in release mode
-make build
-
-# Verify binary
-./A_rustscanner/target/release/rustscanner --help
-
 # Create distribution package
 tar -czf crypto-recovery-toolkit-v1.0.0.tar.gz \
     --exclude='.git' \
-    --exclude='A_rustscanner/target' \
     --exclude='__pycache__' \
     .
 ```
@@ -334,14 +277,13 @@ tar -czf crypto-recovery-toolkit-v1.0.0.tar.gz \
 
 This project follows [Semantic Versioning](https://semver.org/):
 
-- **MAJOR**: Breaking changes (e.g., incompatible JSONL schema change)
+- **MAJOR**: Breaking changes (e.g., incompatible report schema change)
 - **MINOR**: New features (backward compatible)
 - **PATCH**: Bug fixes
 
 Update version in:
-1. `A_rustscanner/Cargo.toml` — `version = "X.Y.Z"`
-2. `CHANGELOG.md` — Add new section with release date
-3. Git tag: `git tag -a vX.Y.Z -m "Release version X.Y.Z"`
+1. `CHANGELOG.md` — Add new section with release date
+2. Git tag: `git tag -a vX.Y.Z -m "Release version X.Y.Z"`
 
 ### Creating a Release
 
@@ -387,15 +329,6 @@ Please see `SECURITY.md` for responsible disclosure procedures.
 ## Troubleshooting
 
 ### Common Issues
-
-**Rust build fails:**
-
-```bash
-cd A_rustscanner
-rustup update
-cargo clean
-cargo build --release
-```
 
 **Python import errors:**
 

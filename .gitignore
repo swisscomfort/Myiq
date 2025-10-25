@@ -1,61 +1,45 @@
-# Git ignore rules# Case directories and sensitive data
-
+# Git ignore rules
+# Case directories and sensitive data
 cases/
-
-# Rust build artifactscase_*/
-
-A_rustscanner/target/*.dd
-
+case_*/
+*.dd
 *.dd.sha256
+*.asc
+*.gpg
 
-# Python caches*.asc
-
-__pycache__/*.gpg
-
-*.pyc
-
-*.pyo# Reports and exports
-
-*.pydreports/
-
+# Reports and exports
+reports/
 exports/
+archives/
+logs/*.log
+logs/*.jsonl
 
-# Case data and disk imagesarchives/
-
-/cases/logs/*.log
-
-*.ddlogs/*.jsonl
-
-*.img
-
-*.E01# Mounted filesystems
-
-*.rawmount/
-
+# Mounted filesystems
+mount/
 mnt/
 
 # Generated reports and packages
+/packages/
+*.zip
+*.gpg
 
-/packages/# Python
+# Local configuration overrides
+config.local.ini
 
-*.zip__pycache__/
+# System files
+.DS_Store
+Thumbs.db
 
-*.gpg*.py[cod]
-
+# Python
+__pycache__/
+*.py[cod]
 *$py.class
-
-# Local configuration overrides*.so
-
-config.local.ini.Python
-
+*.so
+.Python
 build/
-
-# System filesdevelop-eggs/
-
-.DS_Storedist/
-
-Thumbs.dbdownloads/
-
+develop-eggs/
+dist/
+downloads/
 eggs/
 .eggs/
 lib/
@@ -71,11 +55,6 @@ MANIFEST
 venv/
 ENV/
 env/
-
-# Rust
-A_rustscanner/target/
-**/*.rs.bk
-Cargo.lock
 
 # IDE
 .vscode/

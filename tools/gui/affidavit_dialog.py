@@ -12,6 +12,7 @@ from tkinter import ttk, messagebox, filedialog
 from datetime import datetime
 import subprocess
 import shlex
+import shutil
 
 TEMPLATE_PATH = os.path.join("templates", "expert_affidavit.md")
 

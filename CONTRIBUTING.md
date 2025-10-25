@@ -24,16 +24,11 @@ Thank you for considering contributing! This is a sensitive forensic toolkit, so
 ```bash
 # Debian/Ubuntu
 sudo apt update
-sudo apt install -y git bash python3 python3-tk cargo rustc gnupg coreutils util-linux
+sudo apt install -y git bash python3 python3-tk gnupg coreutils util-linux
 
 # Clone repo
 git clone https://github.com/YOUR_USERNAME/crypto-recovery-toolkit.git
 cd crypto-recovery-toolkit
-
-# Build Rust scanner
-cd A_rustscanner
-cargo build --release
-cd ..
 
 # Make scripts executable
 chmod +x scripts/*.sh tools/gui/*.py start.sh
@@ -43,9 +38,6 @@ chmod +x scripts/*.sh tools/gui/*.py start.sh
 ```bash
 # Test Python scanner
 python3 tools/modules/search.py --root ./test_data --outdir ./test_output
-
-# Test Rust scanner
-./A_rustscanner/target/release/rustscanner --root ./test_data --head-size 100000 > test.jsonl
 
 # Validate shell scripts (optional)
 shellcheck scripts/*.sh
@@ -67,11 +59,11 @@ shellcheck scripts/*.sh
 - Type hints encouraged
 - Docstrings for functions
 
-### Rust
-- Rust 2021 edition
-- Use `cargo fmt` and `cargo clippy`
-- Document public APIs
-- Error handling with `anyhow` or `thiserror`
+### Shell Scripts
+- Use `#!/usr/bin/env bash`
+- Always include `set -euo pipefail`
+- Quote all variables
+- Use ShellCheck for linting
 
 ## 🔒 Security Requirements
 
@@ -81,7 +73,7 @@ shellcheck scripts/*.sh
    - Private keys
    - Actual wallet files
    - Personal information
-   
+
 2. **Sanitize examples**:
    - Use fake/generated data only
    - Mask all sensitive patterns

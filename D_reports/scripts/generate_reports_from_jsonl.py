@@ -31,7 +31,7 @@ def generate_owner(case_dir, metadata, findings):
     for h in findings[:20]:
         findings_md += f"- Pfad: `{h.get('path','')}`\n  - Snippet (maskiert): `{h.get('snippet','')}`\n  - Empfehlung: Besprechung mit Operator\n\n"
     report = report.replace('{% for h in findings %}\n- Pfad: `{{ h.path }}`\n  - Snippet (maskiert): `{{ h.snippet }}`\n  - Empfehlung: {{ h.recommendation }}\n{% endfor %}', findings_md)
-    out = os.path.join(case_dir, 'exports', f'owner_report_{datetime.utcnow().strftime(\"%Y%m%dT%H%M%SZ\")}.md')
+    out = os.path.join(case_dir, 'exports', f'owner_report_{datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")}.md')
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, 'w', encoding='utf-8') as f:
         f.write(report)
@@ -51,7 +51,7 @@ def generate_court(case_dir, metadata, findings):
     for h in findings:
         findings_md += f"### Finding\n- path: `{h.get('path','')}`\n- filesize: {h.get('filesize','')}\n- sha256: `{h.get('sha256','')}`\n- snippet (masked): `{h.get('snippet','')}`\n\n"
     report = report.replace('{% for h in findings %}\n### Finding {{ loop.index }}\n- path: `{{ h.path }}`\n- filesize: {{ h.filesize }}\n- sha256: `{{ h.sha256 }}`\n- snippet (masked): `{{ h.snippet }}`\n{% endfor %}', findings_md)
-    out = os.path.join(case_dir, 'exports', f'court_report_{datetime.utcnow().strftime(\"%Y%m%dT%H%M%SZ\")}.md')
+    out = os.path.join(case_dir, 'exports', f'court_report_{datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")}.md')
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, 'w', encoding='utf-8') as f:
         f.write(report)

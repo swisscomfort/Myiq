@@ -17,9 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Complete forensic imaging workflow (`start.sh`, `scripts/image_disk.sh`)
-- Dual-scanner architecture:
-  - Rust-based parallel scanner (`A_rustscanner/`) with JSONL output
-  - Python-based scanner (`tools/modules/search.py`) with masking
+- Python-based scanner (`tools/modules/search.py`) with masking and pattern detection
 - GDPR-compliant data handling with automatic masking
 - Legal compliance framework:
   - Consent forms and DPA templates
@@ -66,10 +64,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Installation and compliance guides
 
 ### Technical Specifications
-- **Languages**: Bash, Python 3.8+, Rust 2021
+- **Languages**: Bash, Python 3.8+
 - **Platform**: Debian/Ubuntu Linux
 - **Dependencies**: Standard GNU coreutils, GPG, optional YARA
-- **Architecture**: Modular shell orchestration + dual scanners
+- **Architecture**: Modular shell orchestration + Python scanner
+- **Testing**: 21 automated tests (pytest, unittest)
+- **Performance**: ~600 files/sec scanning throughput
 
 ---
 

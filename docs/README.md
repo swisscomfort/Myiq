@@ -12,7 +12,7 @@ Welcome to the **Crypto Recovery Toolkit** documentation. This index helps you f
 ## 👨‍💻 Development
 
 - **[DEVELOPMENT.md](../DEVELOPMENT.md)** — Development setup, code standards, testing, and contributing guide
-- **[API Reference](API_REFERENCE.md)** — Rust Scanner JSONL schema and Python module documentation
+- **[API Reference](API_REFERENCE.md)** — Python module documentation and JSON schemas
 
 ## 🏛️ Legal & Compliance
 
@@ -60,7 +60,7 @@ Welcome to the **Crypto Recovery Toolkit** documentation. This index helps you f
 ### For Developers / Contributors
 1. Read: **[DEVELOPMENT.md](../DEVELOPMENT.md)**
 2. Read: **[API Reference](API_REFERENCE.md)**
-3. Reference: **Code in A_rustscanner/, tools/**
+3. Reference: **Code in tools/modules/**
 
 ### For Legal / Compliance Officers
 1. Read: **[GDPR/DSGVO Guide](../README_GDPR.md)**
@@ -91,8 +91,7 @@ Welcome to the **Crypto Recovery Toolkit** documentation. This index helps you f
 ### For Developers
 1. [Architecture](.github/copilot-instructions.md) — System design
 2. [Contributing Guide](../CONTRIBUTING.md) — Development standards
-3. [Rust Scanner Docs](../A_rustscanner/README.md) — Scanner internals
-4. [API Spec](../C_api_spec/docs/api_spec.md) — Integration points
+3. [API Spec](../C_api_spec/docs/api_spec.md) — Integration points
 
 ---
 

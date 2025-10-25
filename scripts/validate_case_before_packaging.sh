@@ -1,5 +1,3 @@
-```markdown
-```bash
 #!/usr/bin/env bash
 # Lightweight validator to run before packaging (prints human-readable guidance)
 # Usage: ./scripts/validate_case_before_packaging.sh /path/to/case_dir
@@ -106,4 +104,3 @@ PY
 echo ""
 echo "Validation PASSED. You may proceed to packaging with package_for_legal_strict.sh"
 exit 0
-```
